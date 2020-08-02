@@ -1,3 +1,3 @@
 class StrainSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :genus, :flavorList, :description, :cannabinoidList, :terpeneList, :effects
 end
