@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   post '/login', to: 'auth#create'
   get '/current_user', to: 'auth#show'
   get '/users_collection/:userId', to: 'collections#entireCollection'
+  get '/users_vendors/:userId', to: 'vendors#allVendors'
+  get '/users_entries/:userId', to: 'entries#allEntries'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

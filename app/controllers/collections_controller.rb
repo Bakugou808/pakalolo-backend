@@ -13,7 +13,7 @@ class CollectionsController < ApplicationController
     render json: @collection
   end
 
-  # GET /users_collections/#userId
+  # GET /users_collections/#userId 
 
   def entireCollection
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_052350) do
+ActiveRecord::Schema.define(version: 2020_08_16_000815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_07_18_052350) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_vendors_on_user_id"
   end
 
   add_foreign_key "collections", "strains"
@@ -115,4 +117,5 @@ ActiveRecord::Schema.define(version: 2020_07_18_052350) do
   add_foreign_key "smoke_lists", "entries"
   add_foreign_key "smoke_lists", "users"
   add_foreign_key "tags", "collections"
+  add_foreign_key "vendors", "users"
 end

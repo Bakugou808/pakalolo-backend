@@ -6,5 +6,23 @@ class User < ApplicationRecord
     # add validation
 
 
+    def all_vendors
+        
+        entries = self.all_entries
+        vendors = entries.map{|entry| entry.vendor}
+        vendors.uniq!
+        
+    end
 
+    def collections 
+        userId = self.id 
+        collection = Collection.where(user_id: userId)
+        
+    end
+
+    def all_entries 
+        entries = self.collections.map{|collection| collection.entries}
+        entries.flatten!
+        
+    end
 end
