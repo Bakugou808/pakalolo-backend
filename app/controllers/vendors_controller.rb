@@ -50,9 +50,10 @@ class VendorsController < ApplicationController
 
   # DELETE /vendors/1
   def destroy
+    vendorId = @vendor.id
     if @vendor.destroy
       
-      render json: {data: 'vendor deleted'}
+      render json: {id: vendorId, data: 'vendor deleted'}
     end 
   end
 

@@ -17,14 +17,14 @@ class EntriesController < ApplicationController
   def allEntries 
     @user = User.find(params[:userId])
     @entries = @user.all_entries
-    render json: @entries
+    render json: @entries 
   end 
 
   # POST /entries
   def create
 
     @entry = Entry.new(entry_params)
-    #  byebug
+     
     if @entry.save
       render json: @entry, status: :created, location: @entry
     else
@@ -43,8 +43,11 @@ class EntriesController < ApplicationController
 
   # DELETE /entries/1
   def destroy
-    byebug
-    @entry.destroy
+    entryId = @entry.id
+    if @entry.destroy
+      
+      render json: {id: entryId, data: 'entry deleted'}
+    end 
   end
 
   private
