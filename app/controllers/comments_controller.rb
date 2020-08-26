@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def allComments 
     
     comments = Comment.where(commentable_type: params[:type], commentable_id: params[:referenceId])
-    render json: comments, include: ['comments.comment.user'] 
+    render json: comments
 
   end
 
@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     
     if @comment.save
+      
       render json: @comment, status: :created, location: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity
@@ -55,6 +56,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.permit(:user_id, :commentable_id, :commentable_type, :rating, :comment)
+      params.permit(:user_id, :username, :commentable_id, :commentable_type, :rating, :comment)
     end
 end
