@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
   def allComments 
     
     comments = Comment.where(commentable_type: params[:type], commentable_id: params[:referenceId])
+    
     render json: comments
 
   end
