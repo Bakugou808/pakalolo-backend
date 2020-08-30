@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get '/users_vendors/:userId', to: 'vendors#allVendors'
   get '/users_entries/:userId', to: 'entries#allEntries'
   get '/all_comments/:type/:referenceId', to: 'comments#allComments'
-
+  get '/users_smokeLists/:userId', to: 'users#allSmokeLists'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,5 @@
 class EntrySerializer < ActiveModel::Serializer
-  attributes :id, :review, :rating, :vendor, :created_at, :vendor_id, :smoke_list_id, :collection, :updated_at, :strain
+  attributes :id, :review, :rating, :vendor, :created_at, :vendor_id, :collection, :updated_at, :strain
   
   belongs_to :collection
   belongs_to :vendor

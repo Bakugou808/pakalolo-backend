@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  # GET /users/1
+  # GET /users/:userId
   def show
     render json: @user
   end
@@ -25,6 +25,15 @@ class UsersController < ApplicationController
     else
       render json: {error: @user.errors, status: :unprocessable_entity}
     end
+  end
+
+  # GET '/users_smokeLists/:userId'
+  def allSmokeLists
+    @user = User.find(params[:userId])
+    
+    @smokeLists = @user.smoke_lists 
+    
+    render json: @smokeLists
   end
 
   # PATCH/PUT /users/1

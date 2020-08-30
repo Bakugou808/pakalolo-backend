@@ -16,7 +16,7 @@ class SmokeListsController < ApplicationController
   # POST /smoke_lists
   def create
     @smoke_list = SmokeList.new(smoke_list_params)
-
+    byebug
     if @smoke_list.save
       render json: @smoke_list, status: :created, location: @smoke_list
     else
