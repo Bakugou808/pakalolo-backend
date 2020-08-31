@@ -31,7 +31,8 @@ class SmokeListsController < ApplicationController
     @entry = EntriesSmokeList.new(entry_id: params[:entry_id], smoke_list_id: params[:smoke_list_id])
     
     if @entry.save 
-      render json: @entry 
+      @newEntry = @entry.entry
+      render json: @newEntry 
     else 
       render json: @entry.errors
     end
