@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get '/users_entries/:userId', to: 'entries#allEntries'
   get '/all_comments/:type/:referenceId', to: 'comments#allComments'
   get '/users_smokeLists/:userId', to: 'users#allSmokeLists'
+  post '/smoke_lists/new_entry', to: 'smoke_lists#newEntry'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

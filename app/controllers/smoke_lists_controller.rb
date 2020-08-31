@@ -15,12 +15,25 @@ class SmokeListsController < ApplicationController
 
   # POST /smoke_lists
   def create
+    
     @smoke_list = SmokeList.new(smoke_list_params)
-    byebug
+    
     if @smoke_list.save
       render json: @smoke_list, status: :created, location: @smoke_list
     else
       render json: @smoke_list.errors, status: :unprocessable_entity
+    end
+  end
+
+  # POST /smoke_lists/new_entry
+  def newEntry 
+    
+    @entry = EntriesSmokeList.new(entry_id: params[:entry_id], smoke_list_id: params[:smoke_list_id])
+    
+    if @entry.save 
+      render json: @entry 
+    else 
+      render json: @entry.errors
     end
   end
 
