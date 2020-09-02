@@ -8,22 +8,32 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  # GET /users/1
+  # GET /users/:userId
   def show
     render json: @user
   end
 
   # POST /users
   def create
+    
     @user = User.new(user_params)
-
+    
     if @user.save
       token = issue_token_on_signup(@user)
-            # render json: {firstName: @user.firstName, lastName: @user.lastName, username: @user.username, id: @user.id, email: @user.email, jwt: token}
-      render json: @user, status: :created, location: @user, jwt: token
+      render json: {username: @user.username, id: @user.id, jwt: token}
+      # render json: @user, status: :created, location: @user, jwt: token
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: {error: @user.errors, status: :unprocessable_entity}
     end
+  end
+
+  # GET '/users_smokeLists/:userId'
+  def allSmokeLists
+    @user = User.find(params[:userId])
+    
+    @smokeLists = @user.smoke_lists 
+    
+    render json: @smokeLists
   end
 
   # PATCH/PUT /users/1
@@ -48,6 +58,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :password_digest, :profileDescription)
+      params.permit(:username, :password, :password_confirmation, :profileDescription)
     end
 end

@@ -13,10 +13,24 @@ class CollectionsController < ApplicationController
     render json: @collection
   end
 
+  # GET /users_collections/#userId 
+
+  def entireCollection
+  
+    collection = Collection.where(user_id: params[:userId]) 
+    
+    if collection
+      render json: collection
+    else
+      render json:{ error: "Nothing To Render", status: :unprocessable_entity}
+    end
+
+  end
+
   # POST /collections
   def create
     @collection = Collection.new(collection_params)
-
+    
     if @collection.save
       render json: @collection, status: :created, location: @collection
     else

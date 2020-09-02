@@ -3,6 +3,8 @@ class Strain < ApplicationRecord
     serialize :cannabinoidList
     serialize :terpeneList
     serialize :effects
+    has_many :comments, as: :commentable 
+    has_many :likes, as: :likeable 
 
     def self.list_of_strain_names
         api_key = "l7yuhjl"
