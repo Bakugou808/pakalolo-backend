@@ -38,6 +38,13 @@ class SmokeListsController < ApplicationController
     end
   end
 
+  # DELETE '/smoke_lists/delete/:sleId'
+
+  def deleteEntry 
+
+    byebug
+  end
+
   # PATCH/PUT /smoke_lists/1
   def update
     if @smoke_list.update(smoke_list_params)

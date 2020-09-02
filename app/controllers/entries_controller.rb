@@ -33,7 +33,9 @@ class EntriesController < ApplicationController
   end
 
   # PATCH/PUT /entries/1
+  
   def update
+    
     if @entry.update(entry_params)
       render json: @entry
     else
