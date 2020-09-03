@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get '/all_comments/:type/:referenceId', to: 'comments#allComments'
   get '/users_smokeLists/:userId', to: 'users#allSmokeLists'
   post '/smoke_lists/new_entry', to: 'smoke_lists#newEntry'
-  delete '/smoke_lists/delete/:sleId', to: 'smoke_lists#deleteEntry'
+  post '/smoke_lists_entry/delete', to: 'smoke_lists#deleteEntry'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
