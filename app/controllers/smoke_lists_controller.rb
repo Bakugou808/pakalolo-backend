@@ -44,7 +44,7 @@ class SmokeListsController < ApplicationController
     
     @entry_smoke_list = EntriesSmokeList.where(entry_id: params[:entry_id], smoke_list_id: params[:smoke_list_id])[0]
     entryId = params[:entry_id]
-    byebug
+    
     if @entry_smoke_list.destroy
       render json: entryId 
     else 
