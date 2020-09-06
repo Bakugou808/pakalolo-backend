@@ -16,7 +16,7 @@ class TagsController < ApplicationController
   # POST /tags
   def create
     @tag = Tag.new(tag_params)
-
+    
     if @tag.save
       render json: @tag, status: :created, location: @tag
     else
@@ -35,7 +35,12 @@ class TagsController < ApplicationController
 
   # DELETE /tags/1
   def destroy
-    @tag.destroy
+    
+    id = @tag.id
+    
+    if @tag.destroy
+      render json: id
+    end
   end
 
   private
@@ -46,6 +51,6 @@ class TagsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tag_params
-      params.require(:tag).permit(:collection_id, :title)
+      params.permit(:collection_id, :title)
     end
 end
