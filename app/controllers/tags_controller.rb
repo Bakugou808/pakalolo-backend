@@ -13,6 +13,25 @@ class TagsController < ApplicationController
     render json: @tag
   end
 
+  # GET /tags/users_tags/:userId
+
+  def usersTags 
+    user = User.find(params[:userId])
+    tags = user.getTags
+    
+    render json: tags
+  end 
+
+  # # GET /tags/strains_with_tag/:tagTitle/:userId
+
+  # def matchedTags
+  #   user = User.find(params[:userId])
+    
+  #   strains = user.getTagMatches(params[:tagTitle])
+  #   byebug
+  #   render json: strains
+
+  # end
   # POST /tags
   def create
     @tag = Tag.new(tag_params)
