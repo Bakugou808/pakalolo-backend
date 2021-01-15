@@ -8,7 +8,7 @@ def get_desc(id)
     parsed_arr = JSON.parse(response_string)
   
     if parsed_arr["desc"]
-        parsed_arr["desc"]
+        parsed_arr["desc"] 
     
     else
         "No Description"

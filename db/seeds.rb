@@ -41,7 +41,7 @@ added_strains = match_list.map{|lab| lab[:sample_name] }.uniq
 added_strains.each do |strain|
     strain_info = ApiCommunications.new
     id = strain_info.get_id(strain)
-    
+     
     terp = {}
     cannabinoids = {}
     match_list.each do |sample|
