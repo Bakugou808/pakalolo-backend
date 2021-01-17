@@ -19,7 +19,11 @@ class TagsController < ApplicationController
     user = User.find(params[:userId])
     tags = user.getTags
     
-    render json: tags
+    if tags
+      render json: tags
+    else 
+      render json: {error: 'no tags found'}
+    end 
   end 
 
   # # GET /tags/strains_with_tag/:tagTitle/:userId
