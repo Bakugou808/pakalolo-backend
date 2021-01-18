@@ -41,8 +41,15 @@ class SmokeListsController < ApplicationController
   # DELETE '/smoke_lists/delete/:sleId'
 
   def deleteEntry 
-
-    byebug
+    
+    @entry_smoke_list = EntriesSmokeList.where(entry_id: params[:entry_id], smoke_list_id: params[:smoke_list_id])[0]
+    entryId = params[:entry_id]
+    
+    if @entry_smoke_list.destroy
+      render json: entryId 
+    else 
+      render json: @entry_smoke_list.errors
+    end
   end
 
   # PATCH/PUT /smoke_lists/1
@@ -56,7 +63,12 @@ class SmokeListsController < ApplicationController
 
   # DELETE /smoke_lists/1
   def destroy
-    @smoke_list.destroy
+    
+    smokeListId = @smoke_list.id
+    if @smoke_list.destroy
+      
+      render json: {id: smokeListId, data: 'entry deleted'}
+    end 
   end
 
   private

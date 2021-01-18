@@ -14,7 +14,7 @@ class User < ApplicationRecord
         vendors.uniq!
         
     end
-
+ 
     def collections 
         userId = self.id 
         collection = Collection.where(user_id: userId)
@@ -26,4 +26,19 @@ class User < ApplicationRecord
         entries.flatten!
         
     end
+
+    def getTags 
+        
+        collections = self.collections 
+        tags = collections.map{|collection| 
+            collection.tags 
+        }.flatten!
+        
+        titles = tags.map{|tag| tag.title }.uniq!
+        
+        titles  
+    end
+
+
+
 end

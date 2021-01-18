@@ -15,8 +15,9 @@ class LikesController < ApplicationController
 
   # POST /likes
   def create
+    
     @like = Like.new(like_params)
-
+    
     if @like.save
       render json: @like, status: :created, location: @like
     else
@@ -24,6 +25,15 @@ class LikesController < ApplicationController
     end
   end
 
+  # /delete_like 
+  def deleteLike 
+    @like = Like.where(likeable_type: params[:likeable_type], likeable_id: params[:likeable_id], user_id: params[:user_id])[0]
+    
+    resp = @like  
+    if @like.destroy
+      render json: resp
+    end
+  end
   # PATCH/PUT /likes/1
   def update
     if @like.update(like_params)
@@ -33,6 +43,7 @@ class LikesController < ApplicationController
     end
   end
 
+  
   # DELETE /likes/1
   def destroy
     @like.destroy
@@ -46,6 +57,6 @@ class LikesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def like_params
-      params.require(:like).permit(:likeable_id, :likeable_type)
+      params.permit(:likeable_id, :likeable_type, :user_id)
     end
 end

@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 2020_08_29_222343) do
     t.index ["vendor_id"], name: "index_entries_on_vendor_id"
   end
 
-  create_table "entries_smoke_lists", id: false, force: :cascade do |t|
-    t.integer "entry_id"
-    t.integer "smoke_list_id"
+  create_table "entries_smoke_lists", force: :cascade do |t|
+    t.integer "entry_id", null: false
+    t.integer "smoke_list_id", null: false
   end
 
   create_table "likes", force: :cascade do |t|

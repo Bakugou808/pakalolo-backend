@@ -27,6 +27,19 @@ class CollectionsController < ApplicationController
 
   end
 
+
+    # GET /tags/strains_with_tag/:tagTitle/:userId
+
+    def matchedTags
+      user = User.find(params[:userId])
+      
+      matchedCollectionIds = Collection.getTagMatches(params[:tagTitle], user)
+      
+      render json: Collection.find(matchedCollectionIds) 
+  
+    end
+
+
   # POST /collections
   def create
     @collection = Collection.new(collection_params)

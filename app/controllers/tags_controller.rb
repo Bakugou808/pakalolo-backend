@@ -13,10 +13,33 @@ class TagsController < ApplicationController
     render json: @tag
   end
 
+  # GET /tags/users_tags/:userId
+
+  def usersTags 
+    user = User.find(params[:userId])
+    tags = user.getTags
+    
+    if tags
+      render json: tags
+    else 
+      render json: {error: 'no tags found'}
+    end 
+  end 
+
+  # # GET /tags/strains_with_tag/:tagTitle/:userId
+
+  # def matchedTags
+  #   user = User.find(params[:userId])
+    
+  #   strains = user.getTagMatches(params[:tagTitle])
+  #   byebug
+  #   render json: strains
+
+  # end
   # POST /tags
   def create
     @tag = Tag.new(tag_params)
-
+    
     if @tag.save
       render json: @tag, status: :created, location: @tag
     else
@@ -35,7 +58,12 @@ class TagsController < ApplicationController
 
   # DELETE /tags/1
   def destroy
-    @tag.destroy
+    
+    id = @tag.id
+    
+    if @tag.destroy
+      render json: id
+    end
   end
 
   private
@@ -46,6 +74,6 @@ class TagsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tag_params
-      params.require(:tag).permit(:collection_id, :title)
+      params.permit(:collection_id, :title)
     end
 end
