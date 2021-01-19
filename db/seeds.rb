@@ -60,14 +60,3 @@ added_strains.each do |strain|
 end 
 
 
-# fill in labresults table
-# flower_list.each do |strain| 
-#     if !LabResult.find_by(strain_id: Strain.find_by(name: strain[:sample_name]).id)
-#         strain_id = Strain.find_by(name: strain[:sample_name]).id
-#         name = strain[:sample_name]
-#         chem_profile = strain.select{|terp, val| val.class == Float && val > 0.0000}
-        
-#         LabResult.create(strain_id: strain_id, name: name, chem_profile: chem_profile)
-#     end 
-# end 
-
