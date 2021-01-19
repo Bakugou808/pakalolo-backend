@@ -33,8 +33,7 @@ class User < ApplicationRecord
         tags = collections.map{|collection| 
             collection.tags 
         }.flatten!
-        
-        titles = tags.map{|tag| tag.title }.uniq!
+        titles = tags.map{|tag| tag.title }.uniq
         
         titles  
     end
