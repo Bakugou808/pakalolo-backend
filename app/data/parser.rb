@@ -9,7 +9,7 @@ api_key = "l7yuhjl"
         list_of_strains = parsed_arr.keys
 
 
-terpene_data = SmarterCSV.process('app/results.csv')
+terpene_data = SmarterCSV.process(Rails.root.join('controllers/data/results.csv'))
 
 
 
