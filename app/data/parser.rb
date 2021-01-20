@@ -14,6 +14,6 @@ api_key = "l7yuhjl"
 
 
 match_list = []
-binding.pry
+
 
 match_list = terpene_data.select{|strain| list_of_strains.to_enum.include?(strain[:sample_name])}
