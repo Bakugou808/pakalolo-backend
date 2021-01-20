@@ -25,38 +25,40 @@ Vendor.delete_all
 
 
 
-terpene_data = SmarterCSV.process( Rails.root.join('data/results.csv') ) #count 8905 Acquires lab results
-strain_names = Strain.list_of_strain_names #count 1970 Acquires cannabis strain descriptions from API
+# terpene_data = SmarterCSV.process( Rails.root.join('data/results.csv') ) 
+#count 8905 Acquires lab results
+# strain_names = Strain.list_of_strain_names 
+#count 1970 Acquires cannabis strain descriptions from API
 
 #count 1281 - finds matching names from lab results
-match_list = terpene_data.select{|strain| strain_names.to_enum.include?(strain[:sample_name]) && strain[:sample_type] == "Flower, Inhalable"} 
+# match_list = terpene_data.select{|strain| strain_names.to_enum.include?(strain[:sample_name]) && strain[:sample_type] == "Flower, Inhalable"} 
 #count 441  - filters through matches to only select flower results
 # flower_list = match_list.select{|strain| strain[:sample_type] == "Flower, Inhalable" } 
 #strains_to_add 
-added_strains = match_list.map{|lab| lab[:sample_name] }.uniq
+# added_strains = match_list.map{|lab| lab[:sample_name] }.uniq
 
 
 
 # fill in strains table
-added_strains.each do |strain|
-    strain_info = ApiCommunications.new
-    id = strain_info.get_id(strain)
+# added_strains.each do |strain|
+#     strain_info = ApiCommunications.new
+#     id = strain_info.get_id(strain)
      
-    terp = {}
-    cannabinoids = {}
-    match_list.each do |sample|
-        if sample[:sample_name] == strain 
-            sample.map do|key, value| 
-                cannabinoidList.include?(key.to_s.upcase) && value > 0.00 ? cannabinoids[key] = value : 0
-                terpeneList.include?(key.to_s.titleize) && value > 0.0000 ? terp[key] = value : 0 
+#     terp = {}
+#     cannabinoids = {}
+#     match_list.each do |sample|
+#         if sample[:sample_name] == strain 
+#             sample.map do|key, value| 
+#                 cannabinoidList.include?(key.to_s.upcase) && value > 0.00 ? cannabinoids[key] = value : 0
+#                 terpeneList.include?(key.to_s.titleize) && value > 0.0000 ? terp[key] = value : 0 
                 
-            end
-        end 
-    end
-    if !Strain.find_by(name: strain)
-        Strain.create(name: strain, description: strain_info.get_desc(id), flavorList: strain_info.get_flavors(id), genus: strain_info.get_genus(strain), effects: strain_info.get_effects(id), terpeneList: terp, cannabinoidList: cannabinoids)
-    end 
+#             end
+#         end 
+#     end
+#     if !Strain.find_by(name: strain)
+#         Strain.create(name: strain, description: strain_info.get_desc(id), flavorList: strain_info.get_flavors(id), genus: strain_info.get_genus(strain), effects: strain_info.get_effects(id), terpeneList: terp, cannabinoidList: cannabinoids)
+#     end 
     
-end 
+# end 
 
 
