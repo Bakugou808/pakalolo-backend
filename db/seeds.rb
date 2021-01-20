@@ -25,7 +25,7 @@ Vendor.delete_all
 
 
 
-terpene_data = SmarterCSV.process( 'app/data/results.csv' ) #count 8905 Acquires lab results
+terpene_data = SmarterCSV.process( Rails.root.join('data/results.csv') ) #count 8905 Acquires lab results
 strain_names = Strain.list_of_strain_names #count 1970 Acquires cannabis strain descriptions from API
 
 #count 1281 - finds matching names from lab results
