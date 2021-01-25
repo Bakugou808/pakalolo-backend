@@ -2,6 +2,7 @@ require 'smarter_csv'
 require 'rest-client' 
 require 'json'
 
+class Parser 
 
 api_key = "l7yuhjl"
         response_string = RestClient.get("strainapi.evanbusse.com/#{api_key}/strains/search/all")
@@ -17,3 +18,4 @@ match_list = []
 
 
 match_list = terpene_data.select{|strain| list_of_strains.to_enum.include?(strain[:sample_name])}
+end 
