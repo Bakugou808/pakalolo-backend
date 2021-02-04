@@ -5,23 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-cannabinoidList = "DELTA_9 THC_A,DELTA_9_THC_A,DELTA_9_THC,DELTA_8_THC,DELTA_8 THC,THC_A,THCV,CBN,CBD_A,CBD,CBDV,CBDV_A,DELTA_9 CBG_A,DELTA_9_CBG_A,DELTA_9 CBG,DELTA_9_CBG,CBC"
-cannabinoidList = cannabinoidList.split(',')
-terpeneList = "Cis_Nerolidol,Trans_Nerolidol,Trans_Nerolidol 1,Trans_Nerolidol 2,Trans_Ocimene,3_Carene,Camphene,Caryophyllene Oxide,Eucalyptol,Geraniol,Guaiol,Isopulegol,Linalool,Ocimene,Terpinolene,Alpha_Bisabolol,Alpha_Humulene,Alpha_Pinene,Alpha_Terpinene,Beta_Caryophyllene,Beta_Myrcene,Beta_Ocimene,Beta_Pinene,Delta_Limonene,Gamma_Terpinene,P_Cymene"
-terpeneList = terpeneList.split(',')
+# cannabinoidList = "DELTA_9 THC_A,DELTA_9_THC_A,DELTA_9_THC,DELTA_8_THC,DELTA_8 THC,THC_A,THCV,CBN,CBD_A,CBD,CBDV,CBDV_A,DELTA_9 CBG_A,DELTA_9_CBG_A,DELTA_9 CBG,DELTA_9_CBG,CBC"
+# cannabinoidList = cannabinoidList.split(',')
+# terpeneList = "Cis_Nerolidol,Trans_Nerolidol,Trans_Nerolidol 1,Trans_Nerolidol 2,Trans_Ocimene,3_Carene,Camphene,Caryophyllene Oxide,Eucalyptol,Geraniol,Guaiol,Isopulegol,Linalool,Ocimene,Terpinolene,Alpha_Bisabolol,Alpha_Humulene,Alpha_Pinene,Alpha_Terpinene,Beta_Caryophyllene,Beta_Myrcene,Beta_Ocimene,Beta_Pinene,Delta_Limonene,Gamma_Terpinene,P_Cymene"
+# terpeneList = terpeneList.split(',')
 
-require_relative '../app/data/api_communications.rb'
+# require_relative '../app/data/api_communications.rb'
 
 
-Entry.delete_all 
-User.delete_all 
-Collection.delete_all 
-Comment.delete_all
-Strain.delete_all 
-Like.delete_all 
-SmokeList.delete_all 
-Tag.delete_all 
-Vendor.delete_all 
+# Entry.delete_all 
+# User.delete_all 
+# Collection.delete_all 
+# Comment.delete_all
+# Strain.delete_all 
+# Like.delete_all 
+# SmokeList.delete_all 
+# Tag.delete_all 
+# Vendor.delete_all 
 
 
 
