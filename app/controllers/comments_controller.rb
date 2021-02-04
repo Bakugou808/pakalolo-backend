@@ -46,7 +46,11 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    @comment.destroy
+    if @comment.destroy
+      render json: {message: 'Comment Destroyed'}
+    else 
+      render json: {error: @comment.errors}
+    end 
   end
 
   private
